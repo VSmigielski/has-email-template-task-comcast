@@ -5,6 +5,7 @@ export default function App() {
 
   const [email, setEmail] = useState('')
   const [alert, setAlert] = useState({show:false, msg:'',type:''});
+  const [title, setTitle] = useState('Title')
 
   const submitBtn = (e) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ export default function App() {
     // add item to list
     showAlert(true, 'success', 'Form submission successful!')
     console.log(email)
+    setTitle('Submitted!')
     }
   }
 
@@ -27,6 +29,7 @@ export default function App() {
     <div className="App">
       <form onSubmit= {submitBtn} >
         {alert.show && <Alert {...alert} removeAlert={showAlert}/>}
+        <h1>{title}</h1>
         <p>Please enter your email:</p>
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
         <button type="submit">Submit</button>
